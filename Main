@@ -1,0 +1,98 @@
+public class Athletes
+{
+    //INSTANCE VARIABLE
+    private String name;
+    private String time;
+    private int place;
+    private double distance;
+    private int runnerId;
+
+    //CONSTRUCTER WITH ALL FIVE INSTANCE VARIABLES
+    public Athletes(String nameIn,String timeIn,int placeIn,double distanceIn,int runnerIdIn){
+        name = nameIn;
+        time = timeIn;
+        place = placeIn;
+        distance = distanceIn;
+        runnerId = runnerIdIn;
+    }
+
+    //GETTER FOR ALL INSTANCE VARIABLES
+    public String getName(){
+        return name;
+    }
+    public String getTime(){
+        return time;
+    }
+    public int getPlace(){
+        return place;
+    }
+    public double getDistance(){
+        return distance;
+    }
+    public int getRunnerId(){
+        return runnerId;
+    }
+    
+
+    //SETTER FOR ALL INSTANCE VARIABLES
+    public void setName(String nameIn){
+        name = nameIn;
+    }
+    public void setTime(String timeIn){
+        time = timeIn;
+    }
+    public void setPlace(int placeIn){
+        place = placeIn;
+    }
+    public void setDistance(double distanceIn){
+        distance = distanceIn;
+    }
+    public void setRuunerId(int runnerIdIn){
+        runnerId = runnerIdIn;
+    }
+
+    //THREE HELPER METHODS
+    //AVERAGE PACE PER MILE METHOD
+    public String pace(){
+        int index = time.indexOf(":");
+        String min = time.substring(0,index);
+        String sec = time.substring(index+1);
+        int secTotal = Integer.decode(sec) + Integer.decode(min)*60;
+        int minPace = (int)(secTotal/distance)/60;
+        int secPace = (int)(secTotal/distance)%60;
+        String secPaceString = String.valueOf(secPace);
+        if (secPaceString.length() == 1){
+            secPaceString = "0" + secPace;
+        }
+        else{
+            secPaceString = secPaceString;
+        }
+        return (minPace + ":" + secPaceString);
+    }
+    
+    //METHOD THAT DISQUALIFIES ATHLETE
+    public void disqualified(){
+        time = "DNF";  //DID NOT FINISH
+        place = 99999; //PUTS THEM AT BOTTOM OF RESULTS PAGE
+    } 
+    
+    //DECIDES IF RACE IS BIG ENOUGH FOR A QUALIFYING MARK AND IF SO IF YOU HIT THAT MARK
+    public String qualified(int totalPeople){
+        if (totalPeople >= 100 && place < 11){
+            return "Qualified";
+        }
+        else{
+            return "Did not qualify";
+        }
+    }
+    
+    //TOSTRING
+    public String toString(){
+        String formattedString = "Name: " + name + "\n";
+        formattedString = formattedString + "Time: " + time + "\n";
+        formattedString = formattedString + "Place: " + place + "\n";
+        formattedString = formattedString + "Distance: " + distance + " miles\n";
+        formattedString = formattedString + "Player ID: " + runnerId;
+        return formattedString;
+    }
+}
