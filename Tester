@@ -1,0 +1,32 @@
+public class TeamTester
+{
+    public static void main(String args[]){
+        Team team1 = new Team("Siena", "Kenworthy");
+
+        //CONSTRUCTING OBJECT AND ADD TO ARRAY
+        Athletes runner1 = new Athletes("Matthew", "3:51", 3, .932, 123);
+        team1.addRuuner(runner1);
+        team1.printDetails();
+        System.out.println("-----------------------------");
+
+        //ADDING ONE OF SAME ID
+        Athletes runner2 = new Athletes("Matthew", "16:47", 30, 3.1, 123);
+        team1.addRuuner(runner2);
+        team1.printDetails();
+        System.out.println("-----------------------------");
+
+        //CREATING 5 MORE OBJECTS AND ADDING THEM TO ARRAY
+        Athletes runner3 = new Athletes("Jackson", "14:38", 6, 3.1, 124);
+        Athletes runner4 = new Athletes("Aidan", "14:04", 3, 3.1, 125);
+        Athletes runner5 = new Athletes("Brandon", "29:55", 1, 6.2, 126);
+        Athletes runner6 = new Athletes("Tommy", "8:59", 1, 1.864, 127);
+        Athletes runner7 = new Athletes("Sletten", "8:42", 5, 1.864, 128);
+
+        team1.addRuuner(runner3);
+        team1.addRuuner(runner4);
+        team1.addRuuner(runner5);
+        team1.addRuuner(runner6);
+        team1.addRuuner(runner7);
+        team1.printDetails();
+    }
+}
